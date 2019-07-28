@@ -145,8 +145,7 @@ transmission_types = {
     "AUTOMATIC": 0,
     "MANUAL": 1,
     "AUTOMATED_MANUAL": 2,
-    "DIRECT_DRIVE": 3,
-    "UNKNOWN": 4
+    "DIRECT_DRIVE": 3
 }
 
 vehicle_size_types = {
