@@ -28,7 +28,7 @@ I have used a [dataset](https://raw.githubusercontent.com/S-Mann/hyperparameter_
   We scrape data for different car manufacturers and their models on the internet and we get prehistoric data on certain manufacturers that are our clients. The data would have features showing details on model and their sales and pricing.
 
 - **Data Preparation**:
-  Since we have scraped data from multiple sources their will be data anomalies like missing values and data inconsistences, we will fix them using some sort of an imputer. We will also scale the data for more efficient results and categorize the nominal data.
+  Since we have scraped data from multiple sources their will be data anomalies like missing values and data inconsistencies, we will fix them using some sort of an imputer. We will also scale the data for more efficient results and categorize the nominal data.
 
 - **Modeling**:
   We will use [RapidMiner](https://rapidminer.com/) to suggest us which algorithm would make the most sense to implement. There are few other methods to check which model would make sense but we would like to use RapidMiner as it's efficient and fast to test.
