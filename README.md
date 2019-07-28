@@ -6,7 +6,7 @@ This project follows the CRISP-DM (CRoss Industry Standard Process for Data Mini
 > This model is an idealised sequence of events. In practice many of the tasks can be performed in a different order and it will often be necessary to backtrack to previous tasks and repeat certain actions. The model does not try to capture all possible routes through the data mining process.
 > -- by ["Smart Vision Europe"](https://www.sv-europe.com/crisp-dm-methodology/)
 
-These are the stated process in the methodoly:
+These are the stated processes in the methodoly:
 
 - Business Understanding
 - Data Understanding
@@ -17,7 +17,7 @@ These are the stated process in the methodoly:
 
 # Project Details
 
-I have used a [dataset](https://raw.githubusercontent.com/S-Mann/hyperparameter_optimization/master/dataset/dataset.csv) that I have combined from multiple source like Wikipedia and Kaggle, I am trying to find strongly coupled attrbutes with respect to our output label. The focus of this project is to highlight how deployment would work in a Data Mining project and optimization of models.
+I have used a [dataset](https://raw.githubusercontent.com/S-Mann/hyperparameter_optimization/master/dataset/dataset.csv) that I have combined from multiple source like Wikipedia and Kaggle, I am trying to find strongly coupled attributes with respect to our output label. The focus of this project is to highlight how deployment would work in a Data Mining project and optimization of models.
 
 # Process Breakdown
 
