@@ -196,13 +196,7 @@ labels_dict = dict({"Engine Hp": {"dropdown": False},
                     "Transmission": {"dropdown": True, "dropdown_values": transmission_types},
                     "Size Category": {"dropdown": True, "dropdown_values": vehicle_size_types},
                     "Style Category": {"dropdown": True, "dropdown_values": vehicle_style_types},
-                    "Cost Per Unit": {"dropdown": False}
-                    })
-
-# "Target Unit Sales": {"dropdown": False},"Target Profit": {"dropdown": False}
-
-# labels_with_fixed_values = {"Engine Cylinders":no_of_cylinders, "Drivetrain":drivetrain, "Number of Doors",
-#                             "Manufacturer", "Body Type", "Transmission", "Size Category", "Style Category"}
+                    "Cost To Make": {"dropdown": False}})
 
 
 def change_dropdown(element, *args):
@@ -249,7 +243,7 @@ def testing(event=None):
                 input_list.append(int(labels_dict[key]["input_value"].get()))
 
     input_list = np.asarray(input_list).reshape(1, -1)
-    labelText.set("$ "+str(model.predict(input_list)[0]))
+    labelText.set(str(model.predict(input_list)[0])+"$")
     print(model.predict(input_list))
     return True
 
