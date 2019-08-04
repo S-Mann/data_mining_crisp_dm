@@ -34,7 +34,7 @@ I have used a [dataset](https://raw.githubusercontent.com/S-Mann/hyperparameter_
   We will use [RapidMiner](https://rapidminer.com/) to suggest us which algorithm would make the most sense to implement. There are few other methods to check which model would make sense but we would like to use RapidMiner as it's efficient and fast to test.
 
 - **Evaluation**:
-  Our metric for worthiness of the model would be the accuracy, RMSE (Root Mean Squared Error) as this is a regression problem. We would see the accuracy, time taken, standard deviation, AUC (Area Under The Curve) ROC (Receiver Operating Characteristics) curve for each model and try to decide upon which model to use.
+  Our metric for worthiness of the model would be the accuracy, RMSE (Root Mean Squared Error) as this is a regression problem. We will first try to find the optimal hyper-parameters for our model using [hyperopt](http://hyperopt.github.io/hyperopt/) to find the minimum amount of loss.
 
 - **Deployment**:
-  We will first try to find the optimal hyper-parameters for our model using [hyperopt](http://hyperopt.github.io/hyperopt/) to find the minimum amount of loss. Then we will build an app which will take in inputs and predict the retail price for the model.
+  No matter how impressive your solution for a problem might be, if it cannot be deployed you have lost the battle. Integration is a key part of deployment. Then we will build an app which will take in inputs and predict the retail price for the model.
