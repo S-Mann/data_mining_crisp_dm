@@ -10,6 +10,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
+hyperparams = ['manhattan', 5]
 
 class MLModel:
     def __init__(self):
@@ -49,7 +50,7 @@ class MLModel:
 
 model = MLModel()
 model.train_test_dataset_split(0.1)
-model.fit(['manhattan', 5])
+model.fit(hyperparams)
 
 
 no_of_cylinders = {
@@ -183,7 +184,6 @@ mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 
-# Year of model [0] and popularity [7] need to be fixed
 labels_dict = dict({"Engine Hp": {"dropdown": False},
                     "Engine Cylinders": {"dropdown": True, "dropdown_values": no_of_cylinders},
                     "Drivetrain": {"dropdown": True, "dropdown_values": drivetrain},
