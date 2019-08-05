@@ -10,6 +10,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
+# Variables
 hyperparams = [
     'manhattan',
     5]
@@ -135,7 +136,9 @@ vehicle_style_types = {
     "Convertible SUV": 15
 }
 
+font_size = ("Courier", 14)
 
+# Machine Learning model
 class MLModel:
     def __init__(self):
         url = "https://raw.githubusercontent.com/S-Mann/hyperparameter_optimization/master/dataset/dataset.csv"
@@ -171,13 +174,12 @@ class MLModel:
         input_val = self.scaler.transform(input_val)
         return self.classifier.predict(input_val)
 
-
+# Model initialization
 model = MLModel()
 model.train_test_dataset_split(0.1)
 model.fit(hyperparams)
 
-font_size = ("Courier", 14)
-
+# GUI Design and Logic
 root = Tk()
 root.title("Car Price Predictor")
 mainframe = ttk.Frame(root, padding="3 3 12 12")
