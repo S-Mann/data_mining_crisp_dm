@@ -10,48 +10,9 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
-hyperparams = ['manhattan', 5]
-
-class MLModel:
-    def __init__(self):
-        url = "https://raw.githubusercontent.com/S-Mann/hyperparameter_optimization/master/dataset/dataset.csv"
-        s = requests.get(url).content
-        self.dataset = pd.read_csv(io.StringIO(s.decode('utf-8')))
-        self.excluded_columns = [x not in ['model', 'msrp', 'model_year', 'popularity', 'profit_per_unit', 'units_sold']
-                                 for x in self.dataset.columns]
-        self.X = self.dataset.iloc[:, self.excluded_columns].values
-        self.y = self.dataset.iloc[:, self.dataset.columns == 'msrp'].values
-
-    def train_test_dataset_split(self, test_size):
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
-            self.X, self.y, test_size=test_size, random_state=123)
-        # Create our imputer to replace missing values with the mean e.g.
-        imp = SimpleImputer(missing_values=np.nan, strategy='mean')
-        imp = imp.fit(self.X_train)
-        self.X_train = imp.transform(self.X_train)
-        imp = imp.fit(self.X_test)
-        self.X_test = imp.transform(self.X_test)
-
-        self.scaler = StandardScaler()
-        self.scaler.fit(self.X_train)
-
-        self.X_train = self.scaler.transform(self.X_train)
-        self.X_test = self.scaler.transform(self.X_test)
-
-    def fit(self, hyperparams):
-        self.classifier = KNeighborsClassifier(
-            n_neighbors=hyperparams[1], metric=hyperparams[0])
-        self.classifier.fit(self.X_train, np.ravel(self.y_train, order='C'))
-
-    def predict(self, input_val):
-        input_val = self.scaler.transform(input_val)
-        return self.classifier.predict(input_val)
-
-
-model = MLModel()
-model.train_test_dataset_split(0.1)
-model.fit(hyperparams)
-
+hyperparams = [
+    'manhattan',
+    5]
 
 no_of_cylinders = {
     "0": 0,
@@ -174,6 +135,46 @@ vehicle_style_types = {
     "Convertible SUV": 15
 }
 
+
+class MLModel:
+    def __init__(self):
+        url = "https://raw.githubusercontent.com/S-Mann/hyperparameter_optimization/master/dataset/dataset.csv"
+        s = requests.get(url).content
+        self.dataset = pd.read_csv(io.StringIO(s.decode('utf-8')))
+        self.excluded_columns = [x not in ['model', 'msrp', 'model_year', 'popularity', 'profit_per_unit', 'units_sold']
+                                 for x in self.dataset.columns]
+        self.X = self.dataset.iloc[:, self.excluded_columns].values
+        self.y = self.dataset.iloc[:, self.dataset.columns == 'msrp'].values
+
+    def train_test_dataset_split(self, test_size):
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
+            self.X, self.y, test_size=test_size, random_state=123)
+        # Create our imputer to replace missing values with the mean e.g.
+        imp = SimpleImputer(missing_values=np.nan, strategy='mean')
+        imp = imp.fit(self.X_train)
+        self.X_train = imp.transform(self.X_train)
+        imp = imp.fit(self.X_test)
+        self.X_test = imp.transform(self.X_test)
+
+        self.scaler = StandardScaler()
+        self.scaler.fit(self.X_train)
+
+        self.X_train = self.scaler.transform(self.X_train)
+        self.X_test = self.scaler.transform(self.X_test)
+
+    def fit(self, hyperparams):
+        self.classifier = KNeighborsClassifier(
+            n_neighbors=hyperparams[1], metric=hyperparams[0])
+        self.classifier.fit(self.X_train, np.ravel(self.y_train, order='C'))
+
+    def predict(self, input_val):
+        input_val = self.scaler.transform(input_val)
+        return self.classifier.predict(input_val)
+
+
+model = MLModel()
+model.train_test_dataset_split(0.1)
+model.fit(hyperparams)
 
 font_size = ("Courier", 14)
 
